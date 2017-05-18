@@ -9,20 +9,22 @@
     </div>
     <%= render 'post_metadata', post: @post %>
 
+    <h3 class="title"><%= @post.title %></h3>
+    <div class="body">
+      <p><%= remove_javascript(@post.body).html_safe %></p>
+    </div>
+
     <% if @post.picture? %>
       <div class="post-picture-wrapper">
         <%= image_tag @post.picture.url(:thumb) %>
       </div>
     <% end %>
 
-    <h3 class="title"><%= @post.title %></h3>
-    <div class="body">
-      <p><%= remove_javascript(@post.body).html_safe %></p>
-    </div>
-
     <div class="post-tags">
-      <% @post.tags.each do |tag| %>
-        <%= link_to tag.name, tag, class: 'tag' %>
+      <% if @post %>
+        <% @post.tags.each do |tag| %>
+          <%= link_to tag.name, tag, class: 'tag' %>
+        <% end %>
       <% end %>
     </div>
 
@@ -60,7 +62,7 @@
       </div>
     <% end %>
   </div>
-</div> 
+</div>
 
 <div class="post-show-footer row" data-animation="fadeInUp-fadeOutDown">
   <% if @related_posts.any? %>

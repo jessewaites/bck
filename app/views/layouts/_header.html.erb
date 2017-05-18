@@ -2,16 +2,12 @@
   <div class="container-fluid col-md-10 col-md-offset-1">
     <div class="navbar-header">
       <%= link_to root_path, class: "navbar-brand", id: "logo" do %>
-        <%= image_tag('stories-logo.svg', height: 40, alt: "Stories") %>
+        <%= image_tag('https://d30y9cdsu7xlg0.cloudfront.net/png/198959-200.png', height: 160, alt: "BCKPCKR") %>
       <% end %>
     </div>
     <ul class="nav navbar-nav filter-links">
       <li>
-        <% if user_signed_in? %>
-          <%= nav_link_to "Home", root_path %>
-        <% else %>
-          <%= nav_link_to "Staff pick", root_path %>
-        <% end %>
+        <%= nav_link_to "BCKPCKR", root_path %>
       </li>
       <li><%= nav_link_to "Top stories", top_stories_path %></li>
       <% if user_signed_in? %>
@@ -19,6 +15,16 @@
       <% else %>
         <li><a href='' data-behavior="trigger-overlay">Bookmarks</a></li>
       <% end %>
+      <li>|</li>
+      <li>
+        <%= link_to 'About BCKPCKR', page_path('about') %>
+      </li>
+      <li>
+        <%= link_to 'How it Works', page_path('how_it_works') %>
+      </li>
+      <li>
+        <%= link_to 'Forum', ("/forum") %>
+      </li>
     </ul>
 
     <div class="folding-nav">

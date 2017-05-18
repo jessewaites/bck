@@ -22,3 +22,15 @@ body {
 .flex-space-btw {
   justify-content: space-between;
 }
+.fa
+{
+    color:blue;
+
+    animation: colorchange1 50s;
+    -webkit-animation: colorchange1 50s
+}
+
+nav.navbar #logo img {
+    top: -20px;
+    height: 79px;
+}

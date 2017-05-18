@@ -1,4 +1,9 @@
+
+
+
 <%= form_for post, html: { multipart: true, class: "editor-form", data: { page: 'main-editor' }, autocomplete: "off" } do |f| %>
+
+
 
   <label class="picture_upload">
     <%= f.file_field :picture %>
@@ -18,7 +23,7 @@
   </div>
 
   <div class="form-group">
-    <%= f.text_area :body, class: 'medium-editable', data: { behavior: "autosave" } %> 
+    <%= f.text_area :body, class: 'medium-editable', data: { behavior: "autosave" } %>
   </div>
 
   <div class="hidden">

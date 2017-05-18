@@ -7,7 +7,7 @@ var Editor = {
 
     var editor = new MediumEditor('.medium-editable', {
       placeholder: {
-        text: "Tell your Story ..."
+        text: "Tell your Hiking / Backpacking Story..."
       }
     });
 
@@ -70,7 +70,7 @@ var Editor = {
       e.stopPropagation();
     });
 
-  }, 
+  },
 
   readURL: function(input) {
     if (input.files && input.files[0]) {

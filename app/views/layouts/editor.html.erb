@@ -11,15 +11,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body class="<%= controller.controller_name %> <%= controller.action_name %>">
-  <%= render 'layouts/editor_header' %>
+  <%= render 'layouts/header' %>
   <%= render 'layouts/alert_messages' %>
   <div data-behavior="progress-bar" class="progress-bar"></div>
 
   <div class="container-fluid">
     <%= yield %>
     <%= yield :sidebar %>
-  </div> 
+  </div>
 
 </body>
 </html>
-

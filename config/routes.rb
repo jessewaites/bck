@@ -65,6 +65,8 @@ Rails.application.routes.draw do
   end
 
   authenticate :admin do
-    mount Sidekiq::Web => '/sidekiq' 
+    mount Sidekiq::Web => '/sidekiq'
   end
+
+  mount Thredded::Engine => '/forum'
 end

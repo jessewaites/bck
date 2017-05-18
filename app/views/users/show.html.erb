@@ -3,6 +3,9 @@
     <header class="hero">
       <div class="profile-info">
         <h1 class="hero-title"><%= @user.username %></h1>
+        <% if @user.verified %>
+          <%= fa_icon "check-circle-o", text: "Verified User" %>
+        <% end %>
         <p class="hero-description"><%= @user.description %></p>
         <% if @user.location.present? %>
           <div class="hero-location">
@@ -17,21 +20,21 @@
 
     <div>
     <% if user_signed_in? %>
-      <%= react_component('UserFollowContainer', 
-                          { followerCount: @followers_count, 
-                            followingCount: @following_count, 
-                            following: current_user.following?(@user), 
-                            followed_id: @user.id, 
+      <%= react_component('UserFollowContainer',
+                          { followerCount: @followers_count,
+                            followingCount: @following_count,
+                            following: current_user.following?(@user),
+                            followed_id: @user.id,
                             hideButton: current_user?(@user),
                             username: @user.username,
                             overlayTrigger: true },
                           ) %>
     <% else %>
-      <%= react_component('UserFollowContainer', 
-                          { followerCount: @user.followers.size, 
-                            followingCount: @user.following.size, 
-                            following: false, 
-                            followed_id: @user.id, 
+      <%= react_component('UserFollowContainer',
+                          { followerCount: @user.followers.size,
+                            followingCount: @user.following.size,
+                            following: false,
+                            followed_id: @user.id,
                             hideButton: false,
                             username: @user.username,
                             overlayTrigger: true },
@@ -44,6 +47,14 @@
     <% end %>
 
     </div>
+  </div>
+</div>
+
+<div class="posts-wrapper" data-animation="fadeInUp-fadeOutDown">
+  <h4 class="small-heading border-top">Recent Forum Posts</h4>
+    <% @user.thredded_posts.order_newest_first.limit(5).each do |forum_post| %>
+      <%= @user.username %> said... "<%= link_to forum_post.content, forum_post %>"
+    <% end %>
   </div>
 </div>
 
@@ -71,7 +82,7 @@
 <% if @recommended_posts.any? %>
   <div class="banner-container" data-animation="fadeInUp-fadeOutDown">
     <div class="posts-wrapper">
-      <h4 class="heading-border-b">Recommended by <%= @user.username %> &#149; 
+      <h4 class="heading-border-b">Recommended by <%= @user.username %> &#149;
         <%= link_to "See all", user_recommended_posts_path(@user) %>
       </h4>
       <div class="flex-container f-wrap">

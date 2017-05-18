@@ -1,0 +1,21 @@
+<% if (users = active_users).present? %>
+  <aside data-thredded-currently-online class="thredded--currently-online">
+    <header>
+      <h3 class="thredded--currently-online--title open">
+        <%= link_to "Back To Main Site", "/" %>
+        <br>
+        <%= t "thredded.users.currently_online" %>
+      </h3>
+    </header>
+
+    <ul class="thredded--currently-online--users">
+      <% users.each do |user| %>
+        <li class="thredded--currently-online--user">
+          <!-- <img class="thredded--currently-online--avatar" src="<%= Thredded.avatar_url.call(user) %>" alt=""/> -->
+          <%= avatar_for user, size: 50, class: "thredded--currently-online--avatar" %>
+          <%= user.thredded_display_name %>
+        </li>
+      <% end %>
+    </ul>
+  </aside>
+<% end %>

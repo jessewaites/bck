@@ -15,10 +15,10 @@ class SearchBar extends React.Component {
           onBlur={() => this.props.hideDropdown()}
           value={this.props.term}
           onChange={(event) => {this.handleInputChange(event.target.value)}}
-          placeholder="Search Stories" 
-          autoComplete="off" 
-          type="search" 
-          name="search[q]" 
+          placeholder="Search Travel Stories" 
+          autoComplete="off"
+          type="search"
+          name="search[q]"
           id="search_q" />
       </form>
     );
@@ -28,4 +28,3 @@ class SearchBar extends React.Component {
     this.props.onSearchTermChange(term);
   }
 }
-

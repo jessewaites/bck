@@ -1,10 +1,5 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid col-md-10 col-md-offset-1">
-    <div class="navbar-header">
-      <%= link_to root_path, class: "navbar-brand", id: "logo" do %>
-        <%= image_tag('stories-logo.svg', height: 40, alt: "Stories") %>
-      <% end %>
-    </div>
 
     <ul class="nav navbar-nav filter-links">
       <li>
@@ -40,7 +35,6 @@
         </li>
         <%= render 'layouts/avatar_dropdown' %>
       </ul>
-    </div> 
+    </div>
   </div>
 </nav>
-
