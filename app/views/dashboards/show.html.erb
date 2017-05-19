@@ -37,6 +37,12 @@
       <%= react_component('FollowSuggestionsContainer') %>
     <% end %>
 
+    <h4 class="small-heading border-top">Story Locations</h4>
+    <% Location.all.each do |location| %>
+    <%= location.address %>
+    <br>
+    <% end %>
+    <br>
     <% unless @dashboard.filtered? %>
       <h4 class="small-heading border-top">Top stories</h4>
       <div class="sidebar-top-stories">

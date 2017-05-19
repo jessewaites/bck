@@ -57,6 +57,7 @@ gem 'high_voltage', '~> 3.0.0'
 gem "font-awesome-rails"
 gem 'thredded', '~> 0.12.3'
 gem 'backport_new_renderer'
+gem 'geocoder'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

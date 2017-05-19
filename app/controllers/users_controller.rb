@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:edit, :update]
   before_action :authorize_user, only: [:edit, :update]
   before_action :set_user, only: [:show, :edit, :update]
+  respond_to :js
 
   def show
     @followers_count = @user.followers.count
@@ -19,6 +20,12 @@ class UsersController < ApplicationController
     else
       render :edit, alert: "Could not update, Please try again"
     end
+  end
+
+  def toggle_approve
+    @user = User.find(params[:id])
+    @user.toggle!(:verified)
+    render :nothing => true
   end
 
   private

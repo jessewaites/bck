@@ -5,6 +5,8 @@
   <ul class="dropdown-menu nav-dropdown">
     <span class="dropdown-arrow-top"></span>
     <span class="dropdown-arrow-bottom"></span>
+    <li class="nd-main"><%= link_to "Home", root_path %></li>
+    <li class="nd-main"><%= link_to "Forum", ("/forum") %></li>
     <li class="nd-main"><%= link_to "New story", new_post_path %></li>
     <li class="nd-main"><%= link_to "Drafts and stories", stories_drafts_path %></li>
     <li role="separator" class="divider"></li>
@@ -12,4 +14,3 @@
     <li class="nd-sub"><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
   </ul>
 </li>
-

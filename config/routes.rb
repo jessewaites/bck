@@ -23,11 +23,6 @@ Rails.application.routes.draw do
   get "search/users" => "search#users", as: :search_users
   post "posts/create_and_edit" => "posts#create_and_edit", as: :post_create_and_edit
 
-  namespace :admin do
-    resource :dashboard, only: [:show]
-    resources :featured_tags, only: [:create, :destroy]
-    resources :featured_posts, only: [:create, :destroy]
-  end
 
   namespace :api do
     resources :notifications, only: [:index] do
@@ -56,6 +51,12 @@ Rails.application.routes.draw do
     resources :responses, only: [] do
       resource :likes, only: [:create, :destroy], module: :responses
       resource :bookmarks, only: [:create, :destroy], module: :responses
+    end
+
+    resources :users do
+      member do
+        put 'toggle', :action => :toggle_approve
+      end
     end
 
     post    "relationships" => "relationships#create"

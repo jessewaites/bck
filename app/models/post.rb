@@ -31,6 +31,9 @@ class Post < ActiveRecord::Base
 
   has_many :bookmarks, as: :bookmarkable, dependent: :destroy
   has_many :bookmarkers, through: :bookmarks, source: :user
+  has_one :location
+
+  accepts_nested_attributes_for :location
 
   delegate :username, to: :user
 
@@ -42,6 +45,7 @@ class Post < ActiveRecord::Base
   scope :featured, -> { where(featured: true) }
 
   mount_uploader :picture, PictureUploader
+
 
   before_save :generate_lead!
   # will_pagination configuration

@@ -7,7 +7,7 @@ var Editor = {
 
     var editor = new MediumEditor('.medium-editable', {
       placeholder: {
-        text: "Tell your Hiking / Backpacking Story..."
+        text: "Click 'Publish' in the upper right corner when you're done. Add images to your post by pressing the + sign."
       }
     });
 

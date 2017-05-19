@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170517165013) do
+ActiveRecord::Schema.define(version: 20170519143539) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,6 +70,17 @@ ActiveRecord::Schema.define(version: 20170517165013) do
 
   add_index "likes", ["likeable_type", "likeable_id"], name: "index_likes_on_likeable_type_and_likeable_id", using: :btree
   add_index "likes", ["user_id"], name: "index_likes_on_user_id", using: :btree
+
+  create_table "locations", force: :cascade do |t|
+    t.string   "address"
+    t.float    "longitude"
+    t.float    "latitude"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "post_id"
+  end
+
+  add_index "locations", ["post_id"], name: "index_locations_on_post_id", using: :btree
 
   create_table "notifications", force: :cascade do |t|
     t.integer  "recipient_id"
@@ -430,6 +441,7 @@ ActiveRecord::Schema.define(version: 20170517165013) do
   add_index "users", ["slug"], name: "index_users_on_slug", unique: true, using: :btree
 
   add_foreign_key "bookmarks", "users"
+  add_foreign_key "locations", "posts"
   add_foreign_key "posts", "users"
   add_foreign_key "responses", "posts"
   add_foreign_key "responses", "users"

@@ -10,6 +10,7 @@
     <%= render 'post_metadata', post: @post %>
 
     <h3 class="title"><%= @post.title %></h3>
+    <h4><%= @post.location.address unless @post.location.blank? %></h4>
     <div class="body">
       <p><%= remove_javascript(@post.body).html_safe %></p>
     </div>
