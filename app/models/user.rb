@@ -47,6 +47,7 @@ class User < ActiveRecord::Base
 
   after_destroy :clear_notifications
   after_commit :send_welcome_email, on: [:create]
+  after_create :follow_jesse
 
   mount_uploader :avatar, AvatarUploader
 
@@ -83,6 +84,10 @@ class User < ActiveRecord::Base
   end
 
   private
+
+    def follow_jesse
+      self.follow(User.find(1))
+    end
 
     # Validates the size on an uploaded image.
     def avatar_image_size

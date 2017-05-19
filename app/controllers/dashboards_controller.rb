@@ -48,6 +48,10 @@ class DashboardsController < ApplicationController
       Post.published.top_stories(5).includes(:user)
     end
 
+    def guest_top_posts
+      Post.published.top_stories(5)
+    end
+
     def recent_posts
       Post.published.recent.includes(:user).paginate(page: params[:page])
     end

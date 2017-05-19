@@ -53,11 +53,10 @@
 <div class="posts-wrapper" data-animation="fadeInUp-fadeOutDown">
   <h4 class="small-heading border-top">Recent Forum Posts</h4>
     <% @user.thredded_posts.order_newest_first.limit(5).each do |forum_post| %>
-      <%= @user.username %> said... "<%= link_to forum_post.content, forum_post %>"
+      <%= @user.username %> said... "<%= link_to forum_post.content, Thredded::UrlsHelper.permalink_path(forum_post) %>"
     <% end %>
   </div>
 </div>
-
 
 <div class="posts-wrapper" data-animation="fadeInUp-fadeOutDown">
   <div class="flex-container border-top">
