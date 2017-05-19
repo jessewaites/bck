@@ -26,6 +26,7 @@
 <% content_for :sidebar do %>
   <aside class="col-md-4 main-sidebar">
     <h4 class="small-heading border-top">Featured tags</h4>
+    <h4 class="small-heading border-top">Featured tags</h4>
     <%= react_component('TagList', { tags: @dashboard.featured_tags }) %>
 
     <% if user_signed_in? %>
@@ -38,11 +39,19 @@
     <% end %>
 
     <h4 class="small-heading border-top">Story Locations</h4>
-    <% Location.all.each do |location| %>
-    <%= location.address %>
-    <br>
+    <div class="sidebar-top-stories">
+    <% Location.all.each_with_index do |location, index| %>
+    <li class="top-stories-list-item">
+      <div class="count-button-wrapper">
+        <span class="count-button"><%= index + 1 %></span>
+      </div>
+      <div class="top-stories-links">
+        <%= location.address %><br/>
+      </div>
+    </li>
     <% end %>
-    <br>
+
+
     <% unless @dashboard.filtered? %>
       <h4 class="small-heading border-top">Top stories</h4>
       <div class="sidebar-top-stories">

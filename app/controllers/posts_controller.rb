@@ -18,7 +18,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new_draft_for(current_user)
-    @location = Location.new
+    @location = @post.build_location
   end
 
   def create

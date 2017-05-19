@@ -1,9 +1,12 @@
 
 
 
-<%= form_for [post, location] html: { multipart: true, class: "editor-form", data: { page: 'main-editor' }, autocomplete: "off" } do |f| %>
+<%= form_for post, html: { multipart: true, class: "editor-form", data: { page: 'main-editor' }, autocomplete: "off" } do |f| %>
+  <%= f.fields_for :location do |f| %>
+  <%= f.label :address%>
+  <%= f.text_field :address %>
+  <% end %>
 
-<%= f.text_field :address %>
   <label class="picture_upload">
     <%= f.file_field :picture %>
     <i class="fa fa-camera"></i>
@@ -29,4 +32,5 @@
     <%= f.text_field :all_tags %>
   </div>
 
+  <%= f.submit "Create Product", class: "example-class" %>
 <% end %>
