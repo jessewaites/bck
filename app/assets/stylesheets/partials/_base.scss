@@ -1,6 +1,9 @@
 html {
   background-color: $white;
 }
+
+// $border-color: black;
+
 body {
   font-family: 'Open Sans', sans-serif;
   font-size: 14px;
@@ -31,6 +34,15 @@ body {
 }
 
 nav.navbar #logo img {
-    top: -20px;
-    height: 79px;
+    top: 3px;
+    height: 40px;
+}
+
+
+nav.navbar .filter-links {
+    margin-top: 16px;
+    margin-left: 100;
+    padding-left: 60px;
+    font-weight: 800;
+
 }

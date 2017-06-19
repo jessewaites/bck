@@ -6,7 +6,7 @@ class DashboardsController < ApplicationController
     if user_signed_in?
       @dashboard = Dashboard.new(user: current_user, posts: feed_posts)
     else
-      @dashboard = Dashboard.new(posts: featured_posts)
+      @dashboard = Dashboard.new(posts: top_posts, filter: :top_stories)
     end
   end
 

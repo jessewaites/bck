@@ -24,7 +24,7 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     if @post.publish
-      redirect_to @post, notice: "Successfully published the post!"
+      redirect_to @post, notice: "Successfully published your adventure story!"
     else
       @post.unpublish
       flash.now[:alert] = "Could not update the post, Please try again"
@@ -38,10 +38,10 @@ class PostsController < ApplicationController
   def update
     @post.assign_attributes(post_params)
     if @post.publish
-      redirect_to @post, notice: "Successfully published the post!"
+      redirect_to @post, notice: "Successfully published your adventure story!"
     else
       @post.unpublish
-      flash.now[:alert] = "Could not update the post, Please try again"
+      flash.now[:alert] = "Could not update the story, Please try again"
       render :edit
     end
   end
@@ -61,7 +61,7 @@ class PostsController < ApplicationController
   private
 
     def post_params
-      params.require(:post).permit(:title, :body, :all_tags, :picture)
+      params.require(:post).permit(:title, :body, :all_tags, :picture, location_attributes: [:address])
     end
 
     def authorize_user

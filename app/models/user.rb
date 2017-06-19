@@ -47,7 +47,7 @@ class User < ActiveRecord::Base
 
   after_destroy :clear_notifications
   after_commit :send_welcome_email, on: [:create]
-  after_create :follow_jesse
+  #after_create :follow_jesse
 
   mount_uploader :avatar, AvatarUploader
 

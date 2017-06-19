@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170519143539) do
+ActiveRecord::Schema.define(version: 20170617203136) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,12 +75,11 @@ ActiveRecord::Schema.define(version: 20170519143539) do
     t.string   "address"
     t.float    "longitude"
     t.float    "latitude"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "post_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.string   "slug"
+    t.boolean  "featured",   default: false
   end
-
-  add_index "locations", ["post_id"], name: "index_locations_on_post_id", using: :btree
 
   create_table "notifications", force: :cascade do |t|
     t.integer  "recipient_id"
@@ -110,8 +109,10 @@ ActiveRecord::Schema.define(version: 20170519143539) do
     t.text     "lead"
     t.string   "slug"
     t.integer  "responses_count", default: 0,     null: false
+    t.integer  "location_id"
   end
 
+  add_index "posts", ["location_id"], name: "index_posts_on_location_id", using: :btree
   add_index "posts", ["slug"], name: "index_posts_on_slug", unique: true, using: :btree
   add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
 
@@ -441,7 +442,7 @@ ActiveRecord::Schema.define(version: 20170519143539) do
   add_index "users", ["slug"], name: "index_users_on_slug", unique: true, using: :btree
 
   add_foreign_key "bookmarks", "users"
-  add_foreign_key "locations", "posts"
+  add_foreign_key "posts", "locations"
   add_foreign_key "posts", "users"
   add_foreign_key "responses", "posts"
   add_foreign_key "responses", "users"

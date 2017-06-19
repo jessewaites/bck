@@ -31,7 +31,7 @@ class Post < ActiveRecord::Base
 
   has_many :bookmarks, as: :bookmarkable, dependent: :destroy
   has_many :bookmarkers, through: :bookmarks, source: :user
-  has_one :location
+  belongs_to :location, autosave: true
 
   accepts_nested_attributes_for :location
 
@@ -108,6 +108,16 @@ class Post < ActiveRecord::Base
 
   def word_count
     words.size
+  end
+
+  def autosave_associated_records_for_location
+    return if location.nil?
+    # Find or create the location by name
+    if new_location = Location.find_by_address(location.address)
+      self.location = new_location
+    else
+      self.location.save!
+    end
   end
 
   # Generate a lead which appears in post panel.

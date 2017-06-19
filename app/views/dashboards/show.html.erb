@@ -1,10 +1,10 @@
 <div class="col-md-6 col-md-offset-1 dashboard-main-content">
 
   <% unless @dashboard.top_stories? %>
-    <% if user_signed_in? && current_page?('/') %>
+    <!-- <% if user_signed_in? && current_page?('/') %>
       <div data-animation="fadeInUp-fadeOutDown">
         <%= render 'shared/inline_editor' %>
-      </div>
+      </div> -->
     <% end %>
     <div class="posts-wrapper" data-behavior="endless-scroll" data-animation="fadeInUp-fadeOutDown">
       <%= render @dashboard.posts %>
@@ -26,7 +26,6 @@
 <% content_for :sidebar do %>
   <aside class="col-md-4 main-sidebar">
     <h4 class="small-heading border-top">Featured tags</h4>
-    <h4 class="small-heading border-top">Featured tags</h4>
     <%= react_component('TagList', { tags: @dashboard.featured_tags }) %>
 
     <% if user_signed_in? %>
@@ -46,7 +45,7 @@
         <span class="count-button"><%= index + 1 %></span>
       </div>
       <div class="top-stories-links">
-        <%= location.address %><br/>
+        <%= link_to location.address, location %><br/>
       </div>
     </li>
     <% end %>

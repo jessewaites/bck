@@ -7,7 +7,7 @@ var Editor = {
 
     var editor = new MediumEditor('.medium-editable', {
       placeholder: {
-        text: "Click 'Publish' in the upper right corner when you're done. Add images to your post by pressing the + sign."
+        text: "Write your story here..."
       }
     });
 
@@ -49,17 +49,17 @@ var Editor = {
       $('.file-upload-previewer').removeClass('hidden');
     });
 
-    /*** Autosave ***/
-    $('[data-behavior="autosave"]').autoSave(function() {
-      $('[data-behavior="editor-message"]').text('Saving...');
-      $('#post_all_tags').val(my_taggle.getTagValues());
-      Editor.postAutosave($('.editor-form').attr('action'),
-                   $('input[name="_method"]').val(),
-                   $('#post_title').val(),
-                   $('#post_body').val(),
-                   $('#post_all_tags').val()
-                  );
-    }, 500);
+    // /*** Autosave ***/
+    // $('[data-behavior="autosave"]').autoSave(function() {
+    //   $('[data-behavior="editor-message"]').text('Saving...');
+    //   $('#post_all_tags').val(my_taggle.getTagValues());
+    //   Editor.postAutosave($('.editor-form').attr('action'),
+    //                $('input[name="_method"]').val(),
+    //                $('#post_title').val(),
+    //                $('#post_body').val(),
+    //                $('#post_all_tags').val()
+    //               );
+    // }, 500);
 
     /*** Form submit ***/
     $('[data-behavior="publish-button"]').on('click', function() {
